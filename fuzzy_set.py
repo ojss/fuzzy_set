@@ -85,8 +85,8 @@ class FuzzySet:
             yield self[i]
 
 
-a = FuzzySet({('x', 0.2), ('y', 0.8)})
-b = FuzzySet({('x', 0.3), ('y', 0.3)})
+a = FuzzySet({('x1', 0.5), ('x2', 0.7), ('x3', 0.0)})
+b = FuzzySet({('x1', 0.8), ('x2', 0.2), ('x3', 1.0)})
 c = FuzzySet({('x', 0.3), ('y', 0.3), ('z', 0.5)})
 x = FuzzySet({('a', 0.5), ('b', 0.3), ('c', 0.7)})
 y = FuzzySet({('a', 0.6), ('b', 0.4)})
@@ -95,10 +95,11 @@ print(f'b -> {b}')
 print(f'Fuzzy union: \n{a | b}')
 print(f'Fuzzy intersection: \n{a & b}')
 print(f'Fuzzy inversion of b: \n{~b}')
+print(f"Fuzzy inversion of a: \n {~a}")
 print(f'Fuzzy Subtraction: \n{a - b}')
-print(f'Multiplication: \n{a * b}')
-r = np.array([[0.5, 0.1], [0.2, 0.9], [0.8, 0.6]])
-s = np.array([[0.6, 0.4, 0.7], [0.5, 0.8, 0.9]])
+
+r = np.array([[0.6, 0.6, 0.8, 0.9], [0.1, 0.2, 0.9, 0.8], [0.9, 0.3, 0.4, 0.8], [0.9, 0.8, 0.1, 0.2]])
+s = np.array([[0.1, 0.2, 0.7, 0.9], [1.0, 1.0, 0.4, 0.6], [0.0, 0.0, 0.5, 0.9], [0.9, 1.0, 0.8, 0.2]])
 print(f"Max Min: of \n{r} \nand \n{s}\n:\n\n")
 
 print(FuzzySet.max_min(r, s))
